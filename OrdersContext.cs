@@ -5,15 +5,15 @@ using System.Data.SqlClient;
 
 namespace Lab4_Dreamers
 {
-    public class DbContext
+    public class OrdersContext
     {
         private string connectionString = "Data Source=.\\HOANGPHUCSEIZA;Initial Catalog=LAB04;Integrated Security=True";
-        public DbContext()
+        public OrdersContext()
         {
         }
-        public List<Supplier> GetSuppliersFromDatabase()
+        public List<Order> GetOrdersFromDatabase()
         {
-            List<Supplier> suppliers = new();
+            List<Order> orders = new();
 
             using (SqlConnection connection = new(this.connectionString))
             {
@@ -27,20 +27,23 @@ namespace Lab4_Dreamers
                     {
                         while (reader.Read())
                         {
-                            Supplier supplier = new()
+                            Order order = new()
                             {
-                                SupplierID = reader.GetInt32(reader.GetOrdinal("SupplierID")),
-                                CompanyName = reader.GetString(reader.GetOrdinal("CompanyName")),
-                                ContactName = reader.GetString(reader.GetOrdinal("ContactName")),
+                                OrderID = reader.GetInt32(reader.GetOrdinal("OrderID")),
+                                CustomerID = reader.GetString(reader.GetOrdinal("CustomerID")),
+                                EmployeeID = reader.GetInt32(reader.GetOrdinal("EmployeeID")),
+                                OrderDate = reader.GetDateTime(reader.GetOrdinal("OrderDate")),
+                                RequiredDate = reader.GetDateTime(reader.GetOrdinal("RequiredDate")),
+
                             };
 
-                            suppliers.Add(supplier);
+                            orders.Add(order);
                         }
                     }
                 }
             }
 
-            return suppliers;
+            return orders;
         }
     }
 }
