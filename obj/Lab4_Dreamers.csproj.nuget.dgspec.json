@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\UIT\\Lab4_Dreamers\\Lab4_Dreamers.csproj": {}
+    "C:\\Users\\Admin\\Workspace\\Lab4_Dreamers\\Lab4_Dreamers.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\UIT\\Lab4_Dreamers\\Lab4_Dreamers.csproj": {
+    "C:\\Users\\Admin\\Workspace\\Lab4_Dreamers\\Lab4_Dreamers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\UIT\\Lab4_Dreamers\\Lab4_Dreamers.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Workspace\\Lab4_Dreamers\\Lab4_Dreamers.csproj",
         "projectName": "Lab4_Dreamers",
-        "projectPath": "D:\\Projects\\UIT\\Lab4_Dreamers\\Lab4_Dreamers.csproj",
-        "packagesPath": "C:\\Users\\T14\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\UIT\\Lab4_Dreamers\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Workspace\\Lab4_Dreamers\\Lab4_Dreamers.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Workspace\\Lab4_Dreamers\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\T14\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,6 +48,10 @@
               "target": "Package",
               "version": "[6.0.16, )"
             },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.5, )"
@@ -55,8 +63,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -68,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.125\\RuntimeIdentifierGraph.json"
         }
       }
     }

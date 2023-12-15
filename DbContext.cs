@@ -7,7 +7,7 @@ namespace Lab4_Dreamers
 {
     public class DbContext
     {
-        private string connectionString = "Server=(localdb)\\mssqllocaldb;Database=DreamerLab4;Trusted_Connection=True;";
+        private string connectionString = "Server=(localdb)\\mssqllocaldb;Database=NorthWind;Trusted_Connection=True;";
         public DbContext()
         {
         }
@@ -41,6 +41,48 @@ namespace Lab4_Dreamers
             }
 
             return suppliers;
+        }
+        public List<Product> GetProducts(string comName="",string proName="")
+        {
+            List<Product> products = new();
+
+            using (SqlConnection connection = new(this.connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT * FROM Products";
+
+                if (comName.Length > 0)
+                {
+                    query = "select * from Products " +
+                        "where SupplierID in (SELECT SupplierID from Suppliers where CompanyName='"+comName+"')";
+                } else if (proName.Length > 0)
+                {
+                    query = "select * from Products " +
+                       "where ProductName like '"+proName+"%'";
+                }
+
+                using (SqlCommand command = new(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Product product = new()
+                            {
+                                ProductID = (Int32)reader.GetSqlInt32(reader.GetOrdinal("ProductID")),
+                                ProductName = reader.GetString(reader.GetOrdinal("ProductName")),
+                                QuantityPerUnit = reader.GetString(reader.GetOrdinal("QuantityPerUnit")),
+                                UnitPrice =(decimal) reader.GetSqlMoney(reader.GetOrdinal("UnitPrice")),
+                            };
+
+                            products.Add(product);
+                        }
+                    }
+                }
+            }
+
+            return products;
         }
     }
 }
