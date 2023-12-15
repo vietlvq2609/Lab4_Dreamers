@@ -9831,19 +9831,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\T14\\.nuget\\packages\\": {}
+    "C:\\Users\\PC\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\UIT\\Lab4_Dreamers\\Lab4_Dreamers.csproj",
+      "projectUniqueName": "D:\\Lab4_Framework\\Lab4_Dreamers\\Lab4_Dreamers.csproj",
       "projectName": "Lab4_Dreamers",
-      "projectPath": "D:\\Projects\\UIT\\Lab4_Dreamers\\Lab4_Dreamers.csproj",
-      "packagesPath": "C:\\Users\\T14\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\UIT\\Lab4_Dreamers\\obj\\",
+      "projectPath": "D:\\Lab4_Framework\\Lab4_Dreamers\\Lab4_Dreamers.csproj",
+      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+      "outputPath": "D:\\Lab4_Framework\\Lab4_Dreamers\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\T14\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9851,6 +9856,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -9897,7 +9903,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
