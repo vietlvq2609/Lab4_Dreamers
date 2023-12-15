@@ -36,6 +36,13 @@ namespace Lab4_Dreamers
                     pattern: "{controller=Employees}/{action=Index}/{id?}");
             });
 
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "suppliers",
+                    pattern: "{controller=Suppliers}/{action=Index}/{id?}");
+            });
+
             app.Run();
         }
     }

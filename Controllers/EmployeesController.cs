@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Lab4_Dreamers.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lab4_Dreamers.Controllers
@@ -25,13 +26,17 @@ namespace Lab4_Dreamers.Controllers
         // GET: EmployeesController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var db = new DbContext();
+            var employee = db.GetEmployeesFromDatabase().Find(e => e.EmployeeID == id);
+            return View(employee);
         }
 
         // GET: EmployeesController/Create
         public ActionResult Create()
         {
-            return View();
+            var db = new DbContext();
+            var employee = db.GetEmployeesFromDatabase().Find(e => e.EmployeeID == 1);
+            return View(employee);
         }
 
         // POST: EmployeesController/Create
@@ -41,6 +46,15 @@ namespace Lab4_Dreamers.Controllers
         {
             try
             {
+                var db = new DbContext();
+                var employee = new Employee()
+                {
+                    FirstName = collection["FirstName"],
+                    LastName = collection["LastName"],
+                    JobTitle = collection["JobTitle"],
+                    PrimaryPhone = collection["PrimaryPhone"]
+                };
+                db.AddEmployee(employee);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -52,7 +66,6 @@ namespace Lab4_Dreamers.Controllers
         // GET: EmployeesController/Edit/5
         public ActionResult Edit(int id)
         {
-            //show the edit form, when the user changes the data and submits, the post method will be called
             var db = new DbContext();
             var employee = db.GetEmployeesFromDatabase().Find(e => e.EmployeeID == id);
             return View(employee);
@@ -65,7 +78,6 @@ namespace Lab4_Dreamers.Controllers
         {
             try
             {
-                //update the employee
                 var db = new DbContext();
                 var employee = db.GetEmployeesFromDatabase().Find(e => e.EmployeeID == id);
                 employee.FirstName = collection["FirstName"];
@@ -94,7 +106,6 @@ namespace Lab4_Dreamers.Controllers
         {
             try
             {
-                //delete the employee
                 var db = new DbContext();
                 var employee = db.GetEmployeesFromDatabase().Find(e => e.EmployeeID == id);
                 db.DeleteEmployee(employee.EmployeeID);
