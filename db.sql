@@ -1,9 +1,15 @@
 CREATE DATABASE DreamerLab4;
+USE DreamerLab4;
 
 CREATE TABLE Suppliers (
     SupplierID INT PRIMARY KEY,
     CompanyName NVARCHAR(255) NOT NULL,
     ContactName NVARCHAR(255) NOT NULL,
+    SupplierName NVARCHAR(255) NOT NULL,
+    Address NVARCHAR(255) NOT NULL,
+    City NVARCHAR(255) NOT NULL,
+    Country NVARCHAR(255) NOT NULL,
+
 );
 CREATE TABLE Products (
     ProductID INT PRIMARY KEY,

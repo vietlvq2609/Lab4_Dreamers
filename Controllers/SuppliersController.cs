@@ -7,10 +7,11 @@ namespace Lab4_Dreamers.Controllers
     public class SuppliersController : Controller
     {
         // GET: SuppliersController
-        public ActionResult Index()
+        public ActionResult Index(int choice = 0)
         {
             var db = new DbContext();
-            return View(db.GetSuppliersFromDatabase());
+            var suppliers = db.GetSuppliers(choice);
+            return View(suppliers);
         }
 
         // GET: SuppliersController/Details/5
@@ -24,7 +25,6 @@ namespace Lab4_Dreamers.Controllers
         // GET: SuppliersController/Create
         public ActionResult Create()
         {
-            
             var db = new DbContext();
             var supplier = db.GetSuppliersFromDatabase().Find(s => s.SupplierID == 1);
             return View(supplier);
@@ -114,12 +114,6 @@ namespace Lab4_Dreamers.Controllers
             {
                 return View();
             }
-        }
-        public ActionResult Index(int choice = 0)
-        {
-            var db = new DbContext();
-            var suppliers = db.GetSuppliers(choice);
-            return View(suppliers);
         }
     }
 }

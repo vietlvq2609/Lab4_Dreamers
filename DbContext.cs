@@ -8,7 +8,7 @@ namespace Lab4_Dreamers
     public class DbContext
     {
         
-        private string connectionString = "server=DESKTOP-J648SAE; database=NorthWind; Trusted_connection=True; Encrypt=False";
+        private string connectionString = "Server=(localdb)\\mssqllocaldb;Database=DreamerLab4;Trusted_Connection=True;";
         public DbContext()
         {
         }
@@ -61,11 +61,11 @@ namespace Lab4_Dreamers
                     query = "SELECT * FROM Suppliers " +
                                "WHERE SupplierID IN " +
                                "(SELECT SupplierID FROM Products GROUP BY SupplierID HAVING COUNT(ProductID) >= 10)";
-                }else if(choice ==2)
+                } else if(choice == 2)
                 {
-                    query = "SELECT * FROM Suppliers " +
-                               "WHERE SupplierID IN " +
-                               "(SELECT SupplierID FROM Products GROUP BY SupplierID HAVING COUNT(ProductID) = 0)";
+                    query = "SELECT * FROM Suppliers s " +
+                               "LEFT JOIN Products p ON s.SupplierID = p.SupplierID " +
+                               "WHERE p.ProductID IS NULL"; 
                 }
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -121,8 +121,9 @@ namespace Lab4_Dreamers
                             {
                                 ProductID = (Int32)reader.GetSqlInt32(reader.GetOrdinal("ProductID")),
                                 ProductName = reader.GetString(reader.GetOrdinal("ProductName")),
-                                QuantityPerUnit = reader.GetString(reader.GetOrdinal("QuantityPerUnit")),
-                                UnitPrice =(decimal) reader.GetSqlMoney(reader.GetOrdinal("UnitPrice")),
+                                SupplierId = (Int32)reader.GetSqlInt32(reader.GetOrdinal("SupplierId")),
+                                UnitPrice =(decimal) reader.GetSqlDecimal(reader.GetOrdinal("UnitPrice")),
+                                UnitsInStock = (Int32)reader.GetSqlInt32(reader.GetOrdinal("UnitsInStock")),
                             };
 
                             products.Add(product);
@@ -133,8 +134,7 @@ namespace Lab4_Dreamers
 
             return products;
         }
-    }
-}
+
         //update supplier
         public void UpdateSupplier(Supplier supplier)
         {

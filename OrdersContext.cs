@@ -7,7 +7,7 @@ namespace Lab4_Dreamers
 {
     public class OrdersContext
     {
-        private string connectionString = "Data Source=.\\HOANGPHUCSEIZA;Initial Catalog=LAB04;Integrated Security=True";
+        private string connectionString = "Server=(localdb)\\mssqllocaldb;Database=DreamerLab4;Trusted_Connection=True;";
         public OrdersContext()
         {
         }

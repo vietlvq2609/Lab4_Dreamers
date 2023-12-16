@@ -18,7 +18,7 @@ namespace Lab4_Dreamers.Controllers
         { 
             var db = new DbContext();
             var employees = db.GetEmployeesFromDatabase();
-            var orders = db.GetOrdersFromDatabase();
+            var orders = new List<Order>();
             var employeesWithoutOrders = employees.FindAll(e => !orders.Exists(o => o.EmployeeID == e.EmployeeID));
             return View(employeesWithoutOrders);
         }

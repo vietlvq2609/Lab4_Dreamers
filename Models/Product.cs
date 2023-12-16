@@ -7,7 +7,9 @@ namespace Lab4_Dreamers.Models
     {
         public int ProductID { get; set; }
         public string ProductName { get; set; }
-        public string QuantityPerUnit { get; set; }
+        public int SupplierId { get; set; }
         public Decimal UnitPrice { get; set; }
+        public int UnitsInStock { get; set; }
+
     }
 }
