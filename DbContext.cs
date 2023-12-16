@@ -19,7 +19,7 @@ namespace Lab4_Dreamers
             {
                 connection.Open();
 
-                string query = "SELECT * FROM Suppliers";
+                string query = "SELECT * FROM Orders";
 
                 using (SqlCommand command = new(query, connection))
                 {
