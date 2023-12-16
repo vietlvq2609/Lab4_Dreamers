@@ -460,3 +460,8 @@ C:\Users\Admin\Workspace\Lab4_Dreamers\bin\Debug\net6.0\Swashbuckle.AspNetCore.S
 C:\Users\Admin\Workspace\Lab4_Dreamers\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Admin\Workspace\Lab4_Dreamers\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Admin\Workspace\Lab4_Dreamers\obj\Debug\net6.0\Lab4_Dreamers.MvcApplicationPartsAssemblyInfo.cs
+D:\Projects\UIT\Lab4_Dreamers\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\Projects\UIT\Lab4_Dreamers\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Projects\UIT\Lab4_Dreamers\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Projects\UIT\Lab4_Dreamers\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Projects\UIT\Lab4_Dreamers\obj\Debug\net6.0\Lab4_Dreamers.MvcApplicationPartsAssemblyInfo.cs
