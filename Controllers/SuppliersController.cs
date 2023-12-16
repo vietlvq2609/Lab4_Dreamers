@@ -115,5 +115,11 @@ namespace Lab4_Dreamers.Controllers
                 return View();
             }
         }
+        public ActionResult Index(int choice = 0)
+        {
+            var db = new DbContext();
+            var suppliers = db.GetSuppliers(choice);
+            return View(suppliers);
+        }
     }
 }

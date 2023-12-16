@@ -7,7 +7,8 @@ namespace Lab4_Dreamers
 {
     public class DbContext
     {
-        private string connectionString = "Server=(localdb)\\mssqllocaldb;Database=NorthWind;Trusted_Connection=True;";
+        
+        private string connectionString = "server=DESKTOP-J648SAE; database=NorthWind; Trusted_connection=True; Encrypt=False";
         public DbContext()
         {
         }
@@ -19,8 +20,8 @@ namespace Lab4_Dreamers
             {
                 connection.Open();
 
-                string query = "SELECT * FROM Orders";
-
+                string query = "SELECT * FROM Suppliers";
+                               
                 using (SqlCommand command = new(query, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -43,9 +44,53 @@ namespace Lab4_Dreamers
                     }
                 }
             }
-
             return suppliers;
         }
+
+        public List<Supplier> GetSuppliers(int choice=0)
+        {
+            List<Supplier> suppliers = new();
+
+            using (SqlConnection connection = new SqlConnection(this.connectionString))
+            {
+                connection.Open();
+                string query = "SELECT * FROM Suppliers";
+
+                if(choice == 1)
+                {
+                    query = "SELECT * FROM Suppliers " +
+                               "WHERE SupplierID IN " +
+                               "(SELECT SupplierID FROM Products GROUP BY SupplierID HAVING COUNT(ProductID) >= 10)";
+                }else if(choice ==2)
+                {
+                    query = "SELECT * FROM Suppliers " +
+                               "WHERE SupplierID IN " +
+                               "(SELECT SupplierID FROM Products GROUP BY SupplierID HAVING COUNT(ProductID) = 0)";
+                }
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Supplier supplier = new Supplier
+                            {
+                                SupplierID = (int)reader["SupplierID"],
+                                CompanyName = reader["CompanyName"].ToString(),
+                                ContactName = reader["ContactName"].ToString(),
+                                Address = reader["Address"].ToString(),
+                                City = reader["City"].ToString(),
+                                Country = reader["Country"].ToString()
+                            };
+
+                            suppliers.Add(supplier);
+                        }
+                    }
+                }
+            }
+            return suppliers;
+        }
+
         public List<Product> GetProducts(string comName="",string proName="")
         {
             List<Product> products = new();

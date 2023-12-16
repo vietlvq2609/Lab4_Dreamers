@@ -4,12 +4,23 @@
     ViewData["Title"] = "Index";
 }
 
+<h1>Các nhà cung cấp</h1>
 <h1>Index</h1>
 
 <p>
     <a asp-action="Index">All Suppliers</a> |
     <a asp-action="Create">Create New</a>
 </p>
+<br />
+<select id="choice" class="mb-3">
+    <option value="0" selected="selected">Tất cả</option>
+    <option value="1">Cung cấp 10 products trở lên</option>
+    <option value="2">Chưa cung cấp product nào</option>
+</select>
+<span id="link">
+    <a href="javascript:void(0);" id="filter">Filter</a>
+</span>
+
 <table class="table">
     <thead>
         <tr>
@@ -62,11 +73,20 @@
                 @Html.DisplayFor(modelItem => item.Country)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.SupplierID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.SupplierID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.SupplierID })
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+@section scripts {
+    <script>
+        document.getElementById("filter").addEventListener("click", function () {
+            var choice = document.getElementById("choice").value;
+            window.location.href = "/Suppliers/Index?choice=" + choice;
+        });
+    </script>
+}
